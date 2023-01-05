@@ -33,7 +33,7 @@ function Users() {
       });
   };
 
-  const [editID, setEditID] = useState();
+  // const [editID, setEditID] = useState();
   const [editName, setEditName] = useState();
   const [editEmail, setEditEmail] = useState();
   const [editState, setEditState] = useState();

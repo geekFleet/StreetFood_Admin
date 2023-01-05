@@ -27,7 +27,7 @@ function Vendors() {
     //   });
   };
 
-  const [editID, setEditID] = useState();
+  // const [editID, setEditID] = useState();
   const [editVendorName, setEditVendorName] = useState();
   const [editLocation, setEditLocation] = useState();
   const [editDescription, setEditDescription] = useState();
