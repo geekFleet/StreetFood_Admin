@@ -1,0 +1,21 @@
+body{
+    background-color: #ACCBEE;
+
+}
+#main-container {
+  place-items: center center;
+  margin-top: 100px;
+}
+  
+#sign-in-form {
+  max-width: 330px;
+}
+  
+.bootstrap-logo {
+  width: 72px;
+  height: 72px;
+}
+  
+.form-control:focus {
+  z-index: 5;
+}
