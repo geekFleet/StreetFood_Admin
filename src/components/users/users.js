@@ -18,7 +18,8 @@ function Users() {
 
   const handleEdit = (user_id) => {
     handleShow();
-    http.get(`/Admin/User/${user_id}`)
+    http
+      .get(`/Admin/User/${user_id}`)
       .then((result) => {
         console.log(result.data);
         // setEditName(result.data.fullname)
@@ -44,25 +45,33 @@ function Users() {
     e.preventDefault();
     if (window.confirm("Are You sure to delete this User") === true) {
       const id = toast.loading("Please wait...");
-      http.delete(`/Admin/User/${user_id}`)
-      .then((result) => {
-        debugger
-        if (result.status === 200) {
+      http
+        .delete(`/Admin/User/${user_id}`)
+        .then((result) => {
+          debugger;
+          if (result.status === 200) {
             getData();
             // clear();
-            toast.update(id, { render: "User has been removed", type: "success", isLoading: false, autoClose: 2000 });                      
-        }
-    })
-    .catch((error) => {
-        console.log(error);
-        toast.update(id, {render: "Something went wrong", type: "error", isLoading: false  });
-    })
+            toast.update(id, {
+              render: "User has been removed",
+              type: "success",
+              isLoading: false,
+              autoClose: 2000,
+            });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.update(id, {
+            render: "Something went wrong",
+            type: "error",
+            isLoading: false,
+          });
+        });
     }
   };
 
-  const handelUpdate = () => {
-
-  };
+  const handelUpdate = () => {};
   const handelEditstatus = (e) => {
     if (e.target.checked) setEditstatus(true);
     else setEditstatus(false);
@@ -70,10 +79,12 @@ function Users() {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getData = () => {
-    http.get(`/Admin/User/`)
+    http
+      .get(`/Admin/User/`)
       .then((result) => {
         setData(result.data);
       })
@@ -81,7 +92,6 @@ function Users() {
         console.log(error);
       });
   };
-  
 
   return (
     <Fragment>
@@ -112,8 +122,24 @@ function Users() {
                   <td>{item.email}</td>
                   <td>{item.city}</td>
                   <td>{item.state}</td>
-                  <td style={item.verify === true ?{backgroundColor:'#89B291'}:{backgroundColor:'#D29393'}}>{item.verify === true ? "Verified" : "Not Verified"}</td>
-                  <td style={item.status === true ?{backgroundColor:'#89B291'}:{backgroundColor:'#D29393'}}>{item.status === true ? "Active" : "Not Active"}</td>
+                  <td
+                    style={
+                      item.verify === true
+                        ? { backgroundColor: "#89B291" }
+                        : { backgroundColor: "#D29393" }
+                    }
+                  >
+                    {item.verify === true ? "Verified" : "Not Verified"}
+                  </td>
+                  <td
+                    style={
+                      item.status === true
+                        ? { backgroundColor: "#89B291" }
+                        : { backgroundColor: "#D29393" }
+                    }
+                  >
+                    {item.status === true ? "Active" : "Not Active"}
+                  </td>
                   <td>{item.created_on}</td>
                   <td>{item.last_updated_on}</td>
                   <td>
@@ -143,18 +169,18 @@ function Users() {
           <Modal.Title>Modify/Update User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Row>
-              <Col>Full Name</Col>
-              <Col md={8}>
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  onChange={(e) => setEditName(e.target.value)}
-                  value={editName}
-                />
-              </Col>
-            </Row>
+          <Row>
+            <Col>Full Name</Col>
+            <Col md={8}>
+              <input
+                type="text"
+                name="name"
+                className="form-control"
+                onChange={(e) => setEditName(e.target.value)}
+                value={editName}
+              />
+            </Col>
+          </Row>
           <Row>
             <Col>Email</Col>
             <Col md={8}>
