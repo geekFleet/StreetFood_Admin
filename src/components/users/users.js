@@ -86,7 +86,8 @@ function Users() {
     http
       .get(`/Admin/User/`)
       .then((result) => {
-        setData(result.data);
+        console.log(result.data)
+        setData(result.data.query);
       })
       .catch((error) => {
         console.log(error);
