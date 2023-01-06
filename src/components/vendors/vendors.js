@@ -66,7 +66,7 @@ function Vendors() {
   const getData = () => {
     http.get(`/vendor`)
       .then((result) => {
-        setData(result.data);
+        setData(result.data.query);
       })
       .catch((error) => {
         console.log(error);
